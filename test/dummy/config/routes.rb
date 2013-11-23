@@ -3,6 +3,7 @@ Dummy::Application.routes.draw do
   # get "weixin/text"
   # get "weixin/image"
   scope :path => "/weixin"   do 
+    # root 'weixin#text'
     weixin_rails_for_signature 'weixin#text', as: :weixin_signature
     weixin_rails_for_text 'weixin#image', as: 'weixin_image'
     # weixin_for_rails_text 'weixin#index', content: /\d/, as: :weixin_text_d

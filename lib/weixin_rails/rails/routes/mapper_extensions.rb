@@ -24,7 +24,7 @@ module WeixinRails
         end
       end
 
-      %w(text image voice video location link signature event).each do |type|
+      %w(text image voice video location link event).each do |type|
         define_method "weixin_rails_for_#{type}" do |*args, &block|          
           # Rails.logger.debug args
           # Rails.logger.debug '*' * 78
