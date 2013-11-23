@@ -7,8 +7,9 @@ module WeixinRails
     attr_reader :created_at, :msg_id
     # attr_reader :type, :content, :from
     def initialize(params, &block)
-      pms = params[:xml] || params
+      pms = params[:xml] #|| params
       if pms 
+        pms.to_options!
         @type        = pms[:MsgType]
         @content     = pms[:Content]
         @from_user   = pms[:FromUserName]

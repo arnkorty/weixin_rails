@@ -4,8 +4,8 @@ Dummy::Application.routes.draw do
   # get "weixin/image"
   scope :path => "/weixin"   do 
     # root 'weixin#text'
-    weixin_rails_for_signature 'weixin#text', as: :weixin_signature
-    weixin_rails_for_text 'weixin#image', as: 'weixin_image'
+    # weixin_rails_for_signature 'weixin#text', as: :weixin_signature
+    root 'weixin#image', as: 'weixin_image', via: :post
     # weixin_for_rails_text 'weixin#index', content: /\d/, as: :weixin_text_d
     weixin_rails_for_event 'weixin#index', event: 'subscdfribe', as: 'fsfsdf'    
     weixin_rails_for_event 'weixin#image', event: 'subscribe', as: 'fsffdssdf'    

@@ -10,7 +10,7 @@ module WeixinRails
           matches[m.to_sym] = options.delete(m.to_sym)
         end
         options[:constraints] ||= WeixinRails::Routes::Matches.new(matches)
-
+        options[:via]         ||= :post
         if args.size > 0   
           root( *args, options , &block)
         else
@@ -19,7 +19,7 @@ module WeixinRails
       end
       
       def weixin_rails_for_signature(*args, &block)
-        constraints(lambda{|req| req.params[:signature] && req.params[:timestamp]}) do
+        constraints(lambda{|req| req.params[:signature] && req.params[:timestamp] && !req.params[:xml]}) do
           root(*args, &block)
         end
       end
