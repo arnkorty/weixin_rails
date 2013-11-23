@@ -25,7 +25,7 @@ module WeixinRails
       end
 
       %w(text image voice video location link signature event).each do |type|
-        define_method "weixin_for_#{type}" do |*args, &block|          
+        define_method "weixin_rails_for_#{type}" do |*args, &block|          
           # Rails.logger.debug args
           # Rails.logger.debug '*' * 78
           options = args.extract_options!            

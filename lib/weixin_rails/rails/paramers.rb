@@ -1,6 +1,6 @@
 module WeixinRails
   class Paramers
-    URL_TYPES = %w(type content from event)
+    URL_TYPES = %w(type content from_user to_user event)
     URL_TYPES.each do |t|
       attr_reader t.to_sym
     end
@@ -11,7 +11,8 @@ module WeixinRails
       if pms 
         @type        = pms[:MsgType]
         @content     = pms[:Content]
-        @from        = pms[:FromUserName]
+        @from_user   = pms[:FromUserName]
+        @to_user     = pms[:ToUserName]
         @event       = pms[:Event]
         @created_at  = pms[:CreateTime]
         @msg_id      = pms[:MsgId]
