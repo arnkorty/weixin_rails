@@ -4,8 +4,9 @@ Dummy::Application.routes.draw do
   # get "weixin/image"
   scope :path => "/weixin"   do 
     weixin_rails_for_signature 'weixin#text', as: :weixin_signature
-    weixin_for_text 'weixin#index', content: /\d/, as: :weixin_text_d
     weixin_for_text 'weixin#image', as: 'weixin_image'
+    weixin_for_text 'weixin#index', content: /\d/, as: :weixin_text_d
+    weixin_for_event 'weixin#index', event: 'subscribe', as: 'fsfsdf'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

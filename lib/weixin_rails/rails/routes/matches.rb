@@ -1,10 +1,10 @@
 module WeixinRails
   module Routes
     class Matches
-      def initialize(options, &block)
-        @type       = options[:type]     if options[:type]
-        @content    = options[:content]  if options[:content]
-        @from       = options[:from]     if options[:from]
+      def initialize(options, &block)        
+        WeixinRails::Paramers::URL_TYPES.each do |t|
+          instance_variable_set("@#{t}",options[t.to_sym]) if options[t.to_sym]
+        end        
         @constraint = block if block_given?
         @flag       = true
       end
@@ -12,10 +12,11 @@ module WeixinRails
       def matches?(request) 
         pms = WeixinRails::Paramers.new(request.params)                
         flag = true
-        %w(type content from).each do |attr|
+        WeixinRails::Paramers::URL_TYPES.each do |attr|
           value = instance_variable_get "@#{attr}"
           if value
             pms_value = pms.send(attr)
+            return false unless pms_value
             if value.is_a? Regexp
               flag = false if  pms_value !~ value 
             else

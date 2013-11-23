@@ -6,7 +6,7 @@ module WeixinRails
 
         options = args.extract_options!
         matches = {}  
-        %w(type content from).each do |m|
+        WeixinRails::Paramers::URL_TYPES.each do |m|
           matches[m.to_sym] = options.delete(m.to_sym)
         end
         options[:constraints] ||= WeixinRails::Routes::Matches.new(matches)
@@ -24,7 +24,7 @@ module WeixinRails
         end
       end
 
-      %w(text image voice video location link signature).each do |type|
+      %w(text image voice video location link signature event).each do |type|
         define_method "weixin_for_#{type}" do |*args, &block|          
           # Rails.logger.debug args
           # Rails.logger.debug '*' * 78
