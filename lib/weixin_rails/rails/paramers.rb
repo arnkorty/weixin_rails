@@ -12,8 +12,8 @@ module WeixinRails
         pms.to_options!
         @type        = pms[:MsgType]
         @content     = pms[:Content]
-        @from_user   = pms[:FromUserName]
-        @to_user     = pms[:ToUserName]
+        @from_user   = pms[:FromUser]
+        @to_user     = pms[:ToUser]
         @event       = pms[:Event]
         @created_at  = pms[:CreateTime]
         @msg_id      = pms[:MsgId]
