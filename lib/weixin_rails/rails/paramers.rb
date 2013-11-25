@@ -13,7 +13,7 @@ module WeixinRails
         @type        = pms[:MsgType]
         @content     = pms[:Content]
         @from_user   = pms[:FromUser] || pms[:FromUserName]
-        @to_user     = pms[:ToUser]   || pms[:FromUserName]
+        @to_user     = pms[:ToUser]   || pms[:ToUserName]
         @event       = pms[:Event]
         @created_at  = pms[:CreateTime]
         @msg_id      = pms[:MsgId]
